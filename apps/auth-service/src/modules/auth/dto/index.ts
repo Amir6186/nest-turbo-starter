@@ -1,8 +1,5 @@
-import { Gender, Role, SuccessResponseDto } from '@app/common';
+import { SuccessResponseDto } from '@app/common';
 import {
-  IsLettersAndSpaces,
-  IsNotFutureDate,
-  IsValidPhoneNumber,
   PropertyDto,
 } from '@app/common';
 import { IsEmail, IsStrongPassword, Matches, MaxLength } from 'class-validator';
@@ -61,93 +58,6 @@ export class LoginResponseDto {
   success?: boolean;
 }
 
-// ****************************** authWithGoogle ******************************
-export class AuthWithGoogleV2BodyDto {
-  @PropertyDto({
-    type: String,
-    validated: true,
-    required: true,
-    description: 'Authorization code from Google OAuth2',
-  })
-  code: string;
-
-  @PropertyDto({
-    type: String,
-    validated: true,
-    required: false,
-  })
-  redirectUri: string;
-}
-
-export class AuthWithGoogleResponseDto extends SignUpResponseDto {}
-
-export class Login2faRequiredResponseDto extends SuccessResponseDto {
-  @PropertyDto()
-  email: string;
-}
-
-// ****************************** finishRegistration ******************************
-export class FinishRegistrationBodyDto {
-  @PropertyDto({
-    type: Role,
-    required: true,
-    validated: true,
-    structure: 'enum',
-    example: 'Patient',
-  })
-  role: Role;
-
-  @PropertyDto({
-    type: String,
-    required: true,
-    validated: true,
-    example: 'Elizabeth',
-  })
-  @IsLettersAndSpaces()
-  firstName: string;
-
-  @PropertyDto({
-    type: String,
-    required: true,
-    validated: true,
-    example: 'Do',
-  })
-  @IsLettersAndSpaces()
-  lastName: string;
-
-  @PropertyDto({
-    type: Date,
-    required: true,
-    validated: true,
-    example: '2000-03-02',
-  })
-  @IsNotFutureDate()
-  dateOfBirth: Date;
-
-  @PropertyDto({
-    type: String,
-    required: true,
-    validated: true,
-    example: '+447123456789',
-  })
-  @IsValidPhoneNumber()
-  phoneNumber: string;
-
-  @PropertyDto({
-    type: Gender,
-    required: true,
-    validated: true,
-    structure: 'enum',
-    example: Gender.Male,
-  })
-  gender: Gender;
-}
-
-export class FinishRegistrationResponseDto extends SignUpResponseDto {}
-
-// ******************************  ResendVerifyEmail ******************************
-export class ResendVerificationEmailResponseDto extends SuccessResponseDto {}
-
 // ******************************  VerifyEmail ******************************
 export class VerifyEmailBodyDto {
   @PropertyDto({
@@ -166,8 +76,6 @@ export class VerifyEmailBodyDto {
   })
   token: string;
 }
-
-export class VerifyEmailResponseDto extends SignUpResponseDto {}
 
 // ******************************  RefreshToken ******************************
 export class RefreshTokenResponseDto {
@@ -221,32 +129,6 @@ export class ResetPasswordBodyDto extends VerifyResetPasswordLinkBodyDto {
 }
 
 export class ResetPasswordResponseDto extends SuccessResponseDto {}
-
-// ****************************** verify 2FA ******************************
-export class Resend2faEmailBodyDto {
-  @PropertyDto({
-    type: String,
-    required: true,
-    validated: true,
-    example: 'temporary001@email.com',
-  })
-  @IsEmail()
-  email: string;
-}
-
-export class Resend2faEmailResponseDto extends SuccessResponseDto {}
-
-export class Verify2faBodyDto extends Resend2faEmailBodyDto {
-  @PropertyDto({
-    type: String,
-    required: true,
-    validated: true,
-    example: '123454',
-  })
-  otp: string;
-}
-
-export class Verify2faResponseDto extends SignUpResponseDto {}
 
 // ****************************** Logout ******************************
 export class LogoutResponseDto extends SuccessResponseDto {}

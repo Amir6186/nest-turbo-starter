@@ -41,11 +41,10 @@ async function bootstrap() {
   await app.init();
 
   // Start microservice
-  // Start microservice
   const msFactory = new MicroserviceFactory(configService);
 
   // const kafkaConsumerConfig = msFactory.createConfig({
-  //   serviceName: MicroserviceName.UserService,
+  //   serviceName: MicroserviceName.NotificationService,
   //   transport: Transport.KAFKA,
   // } as MicroserviceConfigOptions);
   // await app.connectMicroservice<MicroserviceOptions>(kafkaConsumerConfig);
