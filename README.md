@@ -1,10 +1,18 @@
 # 🧠 Nest Turbo Starter
 
-A microservices-based backend system built with Node.js and PostgreSQL, containerized with Docker, and integrated with API gateways (Apache APISIX / Kong).
-
----
+🧠 Nest Turbo Starter
+A high-performance, monorepo microservices platform built with NestJS, optimized for speed using Turborepo and the pnpm package manager. The system is containerized with Docker and features dynamic traffic management and security via API Gateway (Apache APISIX / Kong).
 
 ## 🚀 Getting Started
+
+### 🏗️ System Architecture
+This project implements a robust, containerized microservices architecture designed for high availability and scalability. All core services—built on NestJS and Node.js—reside within a secure Private Subnet, adhering to the principle of service autonomy where each microservice owns its PostgreSQL database. External client requests are strictly managed by Apache APISIX, which serves as the central API Gateway for routing, security, and policy enforcement via HTTP. Internal service-to-service communication is handled via efficient TCP connections, while Kafka is optionally integrated to enable scalable, asynchronous communication and event-driven processing, minimizing service coupling.
+
+<p align="center">
+  <img src="docs/images/architecture.png" alt="Nest Turbo Starter Microservices Architecture" width="342"/>
+</p>
+
+---
 
 ### ✅ Tech Stacks
 
