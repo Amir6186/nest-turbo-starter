@@ -1,23 +1,19 @@
-import { Public, SwaggerApiDocument, User, UserRequestPayload } from '@app/common';
+import { Public, SuccessResponseDto, SwaggerApiDocument, User, UserRequestPayload } from '@app/common';
 import { Body, Controller, HttpStatus, Post } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { RefreshToken } from 'src/decorators';
 import { AuthService } from './auth.service';
 import {
-  ChangePasswordBodyDto,
-  ChangePasswordResponseDto,
-  LoginBodyDto,
+  ChangePasswordDto,
+  LoginDto,
   LoginResponseDto,
-  LogoutResponseDto,
   RefreshTokenResponseDto,
-  ResetPasswordBodyDto,
-  ResetPasswordResponseDto,
-  SendResetPasswordLinkBodyDto,
-  SendResetPasswordResponseDto,
-  SignUpBodyDto,
+  ResetPasswordDto,
+  ForgotPasswordDto,
+  SignUpDto,
   SignUpResponseDto,
-  VerifyResetPasswordLinkBodyDto,
-  VerifyResetPasswordLinkResponseDto,
+  VerifyResetPasswordDto,
+  VerifyResetPasswordResponseDto,
 } from './dto';
 
 @ApiTags('Auth')
@@ -29,7 +25,7 @@ export class AuthController {
   @Public()
   @SwaggerApiDocument({
     response: { status: HttpStatus.OK, type: LoginResponseDto },
-    body: { type: LoginBodyDto, required: true },
+    body: { type: LoginDto, required: true },
     operation: {
       operationId: `login`,
       summary: `Api internalLogin`,
@@ -37,7 +33,7 @@ export class AuthController {
     },
     extra: { isPublic: true },
   })
-  async login(@Body() body: LoginBodyDto): Promise<LoginResponseDto> {
+  async login(@Body() body: LoginDto): Promise<LoginResponseDto> {
     return this.authService.login(body);
   }
 
@@ -48,7 +44,7 @@ export class AuthController {
       status: HttpStatus.OK,
       type: SignUpResponseDto,
     },
-    body: { type: SignUpBodyDto, required: true },
+    body: { type: SignUpDto, required: true },
     operation: {
       operationId: `signUp`,
       summary: `Api internalSignUp`,
@@ -56,7 +52,7 @@ export class AuthController {
     },
     extra: { isPublic: true },
   })
-  async signUp(@Body() body: SignUpBodyDto): Promise<SignUpResponseDto> {
+  async signUp(@Body() body: SignUpDto): Promise<SignUpResponseDto> {
     return this.authService.signUp(body);
   }
 
@@ -90,15 +86,15 @@ export class AuthController {
       description: `User logout`,
     },
   })
-  async logout(@User() userPayload: UserRequestPayload): Promise<LogoutResponseDto> {
+  async logout(@User() userPayload: UserRequestPayload): Promise<SuccessResponseDto> {
     return this.authService.logout(userPayload);
   }
 
   @Post('send-reset-link')
   @Public()
   @SwaggerApiDocument({
-    response: { type: SendResetPasswordResponseDto },
-    body: { type: SendResetPasswordLinkBodyDto, required: true },
+    response: { type: SuccessResponseDto },
+    body: { type: ForgotPasswordDto, required: true },
     operation: {
       operationId: `sendResetPasswordLink`,
       summary: `Api sendResetPasswordLink`,
@@ -106,16 +102,16 @@ export class AuthController {
     },
   })
   async sendResetPasswordLink(
-    @Body() body: SendResetPasswordLinkBodyDto,
-  ): Promise<SendResetPasswordResponseDto> {
+    @Body() body: ForgotPasswordDto,
+  ): Promise<SuccessResponseDto> {
     return this.authService.sendResetPasswordLink(body);
   }
 
   @Post('verify-reset-link')
   @Public()
   @SwaggerApiDocument({
-    response: { type: VerifyResetPasswordLinkResponseDto },
-    body: { type: VerifyResetPasswordLinkBodyDto, required: true },
+    response: { type: VerifyResetPasswordResponseDto },
+    body: { type: VerifyResetPasswordDto, required: true },
     operation: {
       operationId: `verifyResetPasswordLink`,
       summary: `Api verifyResetPasswordLink`,
@@ -123,16 +119,16 @@ export class AuthController {
     },
   })
   async verifyForgotPasswordCode(
-    @Body() body: VerifyResetPasswordLinkBodyDto,
-  ): Promise<VerifyResetPasswordLinkResponseDto> {
+    @Body() body: VerifyResetPasswordDto,
+  ): Promise<VerifyResetPasswordResponseDto> {
     return this.authService.verifyResetPasswordLink(body);
   }
 
   @Post('reset-password')
   @Public()
   @SwaggerApiDocument({
-    response: { type: ResetPasswordResponseDto },
-    body: { type: ResetPasswordBodyDto, required: true },
+    response: { type: SuccessResponseDto },
+    body: { type: ResetPasswordDto, required: true },
     operation: {
       operationId: `resetPassword`,
       summary: `Api resetPassword`,
@@ -140,16 +136,16 @@ export class AuthController {
     },
   })
   async resetPassword(
-    @Body() body: ResetPasswordBodyDto,
-  ): Promise<ResetPasswordResponseDto> {
+    @Body() body: ResetPasswordDto,
+  ): Promise<SuccessResponseDto> {
     return this.authService.resetPassword(body);
   }
 
   @Post('change-password')
   @ApiBearerAuth()
   @SwaggerApiDocument({
-    response: { type: ChangePasswordResponseDto },
-    body: { type: ChangePasswordBodyDto, required: true },
+    response: { type: SuccessResponseDto },
+    body: { type: ChangePasswordDto, required: true },
     operation: {
       operationId: `changePassword`,
       summary: `Api changePassword`,
@@ -157,9 +153,9 @@ export class AuthController {
     },
   })
   async changePassword(
-    @Body() body: ChangePasswordBodyDto,
+    @Body() body: ChangePasswordDto,
     @User() userPayload: UserRequestPayload,
-  ): Promise<ChangePasswordResponseDto> {
+  ): Promise<SuccessResponseDto> {
     return this.authService.changePassword(body, userPayload);
   }
 }

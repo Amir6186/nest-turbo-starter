@@ -11,6 +11,7 @@ import {
   NotificationMessagePattern,
   Role,
   ServerException,
+  SuccessResponseDto,
   UserMessagePattern,
   verifyHashed,
 } from '@app/common';
@@ -25,17 +26,14 @@ import { ClientProxy, Transport } from '@nestjs/microservices';
 import { appConfiguration } from 'src/config';
 import { v4 as uuidv4 } from 'uuid';
 import {
-  ChangePasswordBodyDto,
-  ChangePasswordResponseDto,
-  LoginBodyDto,
+  ChangePasswordDto,
+  LoginDto,
   LoginResponseDto,
-  ResetPasswordBodyDto,
-  ResetPasswordResponseDto,
-  SendResetPasswordLinkBodyDto,
-  SendResetPasswordResponseDto,
-  SignUpBodyDto,
-  VerifyResetPasswordLinkBodyDto,
-  VerifyResetPasswordLinkResponseDto,
+  ResetPasswordDto,
+  ForgotPasswordDto,
+  SignUpDto, SignUpResponseDto,
+  VerifyResetPasswordDto,
+  VerifyResetPasswordResponseDto,
 } from './dto';
 
 @Injectable()
@@ -74,7 +72,7 @@ export class AuthService extends BaseService implements OnModuleInit, OnModuleDe
     // await this.userClientKafka.close();
   }
 
-  async login(body: LoginBodyDto): Promise<LoginResponseDto> {
+  async login(body: LoginDto): Promise<LoginResponseDto> {
     const { email, password } = body;
     const user = await this.msResponse(
       this.userClientTCP.send(UserMessagePattern.GET_USER, { email }),
@@ -90,7 +88,7 @@ export class AuthService extends BaseService implements OnModuleInit, OnModuleDe
     return this.manageUserToken(user);
   }
 
-  async signUp(body: SignUpBodyDto) {
+  async signUp(body: SignUpDto): Promise<SignUpResponseDto> {
     const userData = {
       ...body,
       isActive: true,
@@ -124,8 +122,8 @@ export class AuthService extends BaseService implements OnModuleInit, OnModuleDe
   }
 
   async sendResetPasswordLink(
-    body: SendResetPasswordLinkBodyDto,
-  ): Promise<SendResetPasswordResponseDto> {
+    body: ForgotPasswordDto,
+  ): Promise<SuccessResponseDto> {
     const { email } = body;
     const user = await this.msResponse(
       this.userClientTCP.send(UserMessagePattern.GET_USER, { email }),
@@ -171,8 +169,8 @@ export class AuthService extends BaseService implements OnModuleInit, OnModuleDe
   }
 
   async verifyResetPasswordLink(
-    body: VerifyResetPasswordLinkBodyDto,
-  ): Promise<VerifyResetPasswordLinkResponseDto> {
+    body: VerifyResetPasswordDto,
+  ): Promise<VerifyResetPasswordResponseDto> {
     const { email, token } = body;
     const user = await this.msResponse(
       this.userClientTCP.send(UserMessagePattern.GET_USER, { email }),
@@ -185,7 +183,7 @@ export class AuthService extends BaseService implements OnModuleInit, OnModuleDe
     return { isValid };
   }
 
-  async resetPassword(body: ResetPasswordBodyDto): Promise<ResetPasswordResponseDto> {
+  async resetPassword(body: ResetPasswordDto): Promise<SuccessResponseDto> {
     const { newPassword, email, token } = body;
 
     const user = await this.msResponse(
@@ -287,9 +285,9 @@ export class AuthService extends BaseService implements OnModuleInit, OnModuleDe
   }
 
   async changePassword(
-    body: ChangePasswordBodyDto,
+    body: ChangePasswordDto,
     userPayload: UserRequestPayload,
-  ): Promise<ChangePasswordResponseDto> {
+  ): Promise<SuccessResponseDto> {
     const { currentPassword, newPassword } = body;
     const user = await this.msResponse(
       this.userClientTCP.send(UserMessagePattern.GET_USER, {
