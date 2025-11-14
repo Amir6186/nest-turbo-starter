@@ -2,6 +2,42 @@
 
 A high-performance, monorepo microservices platform built with NestJS, optimized for speed using Turborepo and the pnpm package manager. The system is containerized with Docker and features dynamic traffic management and security via API Gateway (Apache APISIX / Kong).
 
+# 📑 Table of Contents
+
+- [🚀 Getting Started](#-getting-started)
+    - [🏗️ System Architecture](#️-system-architecture)
+- [✅ Tech Stacks](#-tech-stacks)
+    - [🚀 Core Backend](#-core-backend)
+    - [🌐 API Gateway & Service Mesh](#-api-gateway--service-mesh)
+    - [⚙️ Infrastructure & DevOps](#️-infrastructure--devops)
+    - [🧰 Developer Tools](#-developer-tools)
+- [⚙️ Installation Preparation](#️-installation-preparation)
+- [🐳 Build with Docker](#-i-build-with-docker)
+    - [1️⃣ Setup Docker](#1-setup-docker)
+    - [2️⃣ Install Dependencies](#2-install-dependencies)
+    - [3️⃣ Build Services](#3-build-services)
+    - [4️⃣ Run Database Migrations](#4-run-database-migrations)
+    - [5️⃣ Start Microservices](#5-start-microservices)
+- [🧑‍💻 Manual Build](#-ii-manual-build)
+    - [1️⃣ Prerequisites](#1-prerequisites)
+    - [🧩 Create Only Required Docker Containers](#-create-only-required-docker-containers)
+    - [2️⃣ Environment Setup](#2-environment-setup)
+    - [3️⃣ Install Dependencies](#3-install-dependencies)
+    - [4️⃣ Build](#4-build)
+    - [5️⃣ Run Database Migrations](#5-run-database-migrations)
+    - [6️⃣ Start Microservices](#6-start-microservices)
+- [🌐 API Gateway Configuration](#-api-gateway-configuration)
+    - [1️⃣ Apache APISIX (Default Gateway)](#1-apache-apisix-default-gateway)
+    - [2️⃣ Kong Gateway (Alternative Option)](#2-kong-gateway-alternative-option)
+- [🌍 Access URLs](#-access-urls)
+    - [🧭 API Gateways](#-api-gateways)
+    - [⚙️ Microservices](#-microservices)
+    - [🧰 Tools & Management UI](#-tools--management-ui)
+- [🔐 Demo API — Sign-Up & Login (cURL)](#-demo-api--sign-up--login-curl)
+    - [1️⃣ Sign-Up](#1-sign-up)
+    - [2️⃣ Login](#2-login)
+- [📘 Notes](#-notes)
+
 ## 🚀 Getting Started
 
 ### 🏗️ System Architecture
@@ -80,7 +116,7 @@ This project implements a robust, containerized microservices architecture desig
 > - Make sure to add these variables of **root** to turbo.json (or your monorepo configuration)
 ---
 
-# 🐳 I. Build with Docker
+# 🐳 Build with Docker
 
 ### 1️⃣ Setup Docker
 
@@ -170,7 +206,7 @@ docker compose exec node pnpm --filter=auth-service build
 
 ---
 
-# 🧑‍💻 II. Manual Build
+# 🧑‍💻 Manual Build
 
 If you prefer to run the Node application **without Docker**, follow these steps.
 
