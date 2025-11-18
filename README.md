@@ -4,43 +4,43 @@ A high-performance, monorepo microservices platform built with NestJS, optimized
 
 # 📑 Table of Contents
 
-- [🚀 Getting Started](#-getting-started)
-    - [🏗️ System Architecture](#️-system-architecture)
-- [✅ Tech Stacks](#-tech-stacks)
-    - [🚀 Core Backend](#-core-backend)
-    - [🌐 API Gateway & Service Mesh](#-api-gateway--service-mesh)
-    - [⚙️ Infrastructure & DevOps](#️-infrastructure--devops)
-    - [🧰 Developer Tools](#-developer-tools)
-- [⚙️ Installation Preparation](#️-installation-preparation)
-- [🐳 Build with Docker](#-i-build-with-docker)
-    - [1️⃣ Setup Docker](#1-setup-docker)
-    - [2️⃣ Install Dependencies](#2-install-dependencies)
-    - [3️⃣ Build Services](#3-build-services)
-    - [4️⃣ Run Database Migrations](#4-run-database-migrations)
-    - [5️⃣ Start Microservices](#5-start-microservices)
-- [🧑‍💻 Manual Build](#-ii-manual-build)
-    - [1️⃣ Prerequisites](#1-prerequisites)
-    - [🧩 Create Only Required Docker Containers](#-create-only-required-docker-containers)
-    - [2️⃣ Environment Setup](#2-environment-setup)
-    - [3️⃣ Install Dependencies](#3-install-dependencies)
-    - [4️⃣ Build](#4-build)
-    - [5️⃣ Run Database Migrations](#5-run-database-migrations)
-    - [6️⃣ Start Microservices](#6-start-microservices)
-- [🌐 API Gateway Configuration](#-api-gateway-configuration)
-    - [1️⃣ Apache APISIX (Default Gateway)](#1-apache-apisix-default-gateway)
-    - [2️⃣ Kong Gateway (Alternative Option)](#2-kong-gateway-alternative-option)
-- [🌍 Access URLs](#-access-urls)
-    - [🧭 API Gateways](#-api-gateways)
-    - [⚙️ Microservices](#-microservices)
-    - [🧰 Tools & Management UI](#-tools--management-ui)
-- [🔐 Demo API — Sign-Up & Login (cURL)](#-demo-api--sign-up--login-curl)
-    - [1️⃣ Sign-Up](#1-sign-up)
-    - [2️⃣ Login](#2-login)
-- [📘 Notes](#-notes)
+* [🚀 Getting Started](#-getting-started)
+* [🏗️ System Architecture](#-system-architecture)
+* [✅ Tech Stacks](#-tech-stacks)
+* [🛠️ Installation Preparation](#-installation-preparation)
+* [🐳 Build with Docker](#build-with-docker-)
+  * [Setup Docker](#setup-docker)
+  * [Install Dependencies](#install-dependencies)
+  * [Build Services](#build-services)
+  * [Run Database Migrations](#run-database-migrations)
+  * [Start Microservices](#start-microservices)
+* [🧑‍💻 Manual Build](#-manual-build)
+  * [Prerequisites](#prerequisites)
+  * [Environment Setup](#environment-setup)
+  * [Install Dependencies](#install-dependencies-1)
+  * [Build](#build)
+  * [Run Database Migrations](#run-database-migrations-1)
+  * [Start Microservices](#start-microservices-1)
+* [🌐 API Gateway Configuration](#-api-gateway-configuration)
+  * [Apache APISIX (Default Gateway)](#apache-apisix-default-gateway)
+  * [Kong Gateway (Alternative Option)](#kong-gateway-alternative-option)
+* [🌍 Access URLs](#-access-urls)
+  * [🧭 API Gateways](#-api-gateways)
+  * [⚙️ Microservices](#-microservices)
+  * [🧰 Tools & Management UI](#-tools--management-ui)
+* [🔐 Demo API — Sign-Up & Login (cURL)](#-demo-api--sign-up--login-curl)
+  * [Sign-Up](#sign-up)
+  * [Login](#login)
+* [📘 Notes](#-notes)
 
-## 🚀 Getting Started
+# 🚀 Getting Started
 
-### 🏗️ System Architecture
+## ✨ Key Concepts (Monorepo & Performance)
+This starter uses a Monorepo structure managed by **Turborepo** and **pnpm** to maximize performance and simplify development across multiple microservices.
+
+---
+
+## 🏗️ System Architecture
 
 <p align="center">
   <img src="docs/images/architecture.png" alt="Nest Turbo Starter Microservices Architecture" width="342"/>
@@ -51,28 +51,29 @@ This project implements a robust, containerized microservices architecture desig
 
 ---
 
-### ✅ Tech Stacks
+## ✅ Tech Stacks
 
-#### 🚀 Core Backend
-| Component | Version | Description |
-|------------|---------|-------------|
-| Node.js | 22.15   | JavaScript runtime |
-| NestJS | 11      | Backend framework |
-| TypeScript | 5.x     | Type-safe language |
-| PostgreSQL | 16      | Main relational DB |
-| Redis | 8.0     | Cache & queue backend |
-| pnpm | 10.x    | Monorepo package manager |
+### 🚀 Core Backend
+| Component        | Version | Description                           |
+|------------------|---------|---------------------------------------|
+| Node.js          | 22.15   | JavaScript runtime                    |
+| NestJS           | 11      | Backend framework                     |
+| TypeScript       | 5.x     | Type-safe language                    |
+| PostgreSQL       | 16      | Main relational DB                    |
+| MikroORM         | 6.x     | ORM                                   |
+| Redis            | 8.0     | Cache & queue backend                 |
+| pnpm             | 10.x    | Monorepo package manager              |
 | Kafka (optional) | 4.x     | Event streaming & async communication |
 
 
-#### 🌐 API Gateway & Service Mesh
+### 🌐 API Gateway & Service Mesh
 | Component | Version | Description |
 |------------|----------|-------------|
 | Apache APISIX | 3.14 | Default API Gateway |
 | Etcd | 3.5.1 | APISIX config store |
 | Kong | 3.12 | Optional alternative gateway |
 
-#### ⚙️ Infrastructure & DevOps
+### Infrastructure & DevOps
 | Component | Version | Description |
 |------------|----------|-------------|
 | Docker / Compose | latest | Containerization |
@@ -82,7 +83,7 @@ This project implements a robust, containerized microservices architecture desig
 | Kafka UI | latest | Kafka management UI |
 | Kong Manager | 3.12 | Kong dashboard |
 
-#### 🧰 Developer Tools
+### 🧰 Developer Tools
 | Tool | Description |
 |------|--------------|
 | ESLint / Prettier | Linting & formatting |
@@ -92,7 +93,7 @@ This project implements a robust, containerized microservices architecture desig
 | Dotenv | Env management |
 ---
 
-## ⚙️ Installation Preparation
+## 🛠️  Installation Preparation
 
 1. **Default Base Path**
 
@@ -116,9 +117,9 @@ This project implements a robust, containerized microservices architecture desig
 > - Make sure to add these variables of **root** to turbo.json (or your monorepo configuration)
 ---
 
-# 🐳 Build with Docker
+# Build with Docker 🐳
 
-### 1️⃣ Setup Docker
+### Setup Docker
 
 Build and start all containers:
 
@@ -128,7 +129,7 @@ docker compose up -d --build
 
 ---
 
-### 2️⃣ Install Dependencies
+### Install Dependencies
 
 Install dependencies inside the Node container:
 
@@ -138,7 +139,7 @@ docker compose exec node pnpm install
 
 ---
 
-### 3️⃣ Build Services
+### Build Services
 
 #### Build all services
 
@@ -154,7 +155,7 @@ docker compose exec node pnpm --filter=auth-service build
 
 ---
 
-### 4️⃣ Run Database Migrations
+### Run Database Migrations
 
 #### Run migrations for all services
 
@@ -172,7 +173,7 @@ docker compose exec node pnpm --filter=auth-service build
 
 ---
 
-### 5️⃣ Start Microservices
+### Start Microservices
 
 #### 🧩 Development Mode
 
@@ -212,9 +213,9 @@ If you prefer to run the Node application **without Docker**, follow these steps
 
 ---
 
-### 1️⃣ Prerequisites
+### Prerequisites
 
-### 🧩 Create Only Required Docker Containers
+#### Create Only Required Docker Containers
 
 If you want to run microservices **manually** while still using Docker for dependencies (e.g., database, Redis, API gateway), you can start only the required containers.
 
@@ -246,7 +247,7 @@ docker compose up -d apisix
 
 ---
 
-### 2️⃣ Environment Setup
+### Environment Setup
 
 Copy and configure environment variables:
 
@@ -258,7 +259,7 @@ Edit `.env` with correct values for database, Redis, Kafka, and gateway settings
 
 ---
 
-### 3️⃣ Install Dependencies
+### Install Dependencies
 
 Install all workspace dependencies:
 
@@ -274,7 +275,7 @@ pnpm --filter=auth-service install
 
 ---
 
-### 4️⃣ Build
+### Build
 
 Build all microservices:
 
@@ -290,7 +291,7 @@ pnpm --filter=auth-service build
 
 ---
 
-### 5️⃣ Run Database Migrations
+### Run Database Migrations
 
 Run migrations for all services:
 
@@ -306,7 +307,7 @@ pnpm --filter=auth-service migrate:up
 
 ---
 
-### 6️⃣ Start Microservices
+### Start Microservices
 
 #### Development mode
 
@@ -351,7 +352,7 @@ pnpm prod --filter=auth-service
 >   - Active community and rapid development
 > - The system is currently under active development to integrate and extend these features.
 
-### 1️⃣  Apache APISIX (Default Gateway)
+### Apache APISIX (Default Gateway)
 
 #### Sync configuration from file
 
@@ -369,7 +370,7 @@ docker compose run --rm adc adc dump -o adc/adc.yaml
 
 ---
 
-### 2️⃣  Kong Gateway (Alternative Option)
+### Kong Gateway (Alternative Option)
 
 Sync configuration using `deck`:
 
@@ -412,7 +413,7 @@ docker compose run --rm kong-deck gateway sync /app/kong-dev.yaml
 ---
 # 🔐 Demo API — Sign-Up & Login (cURL)
 
-## 1️⃣ Sign-Up
+## Sign-Up
 ```bash
     curl --location --request GET 'http://0.0.0.0:9080/auth-service/api/auth/sign-up' \
     --header 'Content-Type: application/json' \
@@ -421,7 +422,7 @@ docker compose run --rm kong-deck gateway sync /app/kong-dev.yaml
         "password": "12345678Aa@"
     }'
 ```
-## 2️⃣ Login
+## Login
 ```bash
     curl --location --request POST 'http://0.0.0.0:9080/auth-service/api/auth/login' \
     --header 'Content-Type: application/json' \
