@@ -13,7 +13,7 @@
     "build:clean": "turbo run build:clean",
     "test": "turbo run test",
     "dev": "dotenv -e .env -- turbo run start:dev --parallel",
-    "prod": "dotenv -e .env -- turbo run start:prod --parallel",
+    "prod": "turbo run start:prod --parallel",
     "migrate": "turbo run migration:up --parallel",
     "lint": "turbo run lint",
     "prepare": "husky",
