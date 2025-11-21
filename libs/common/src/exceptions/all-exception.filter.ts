@@ -64,8 +64,11 @@ export class AllExceptionFilter implements ExceptionFilter {
         message: `A non-http error being throw somewhere`,
       });
 
+      const rpcError = exception as any;
       _.assign(errorData, {
-        ...ERROR_RESPONSE.INTERNAL_SERVER_ERROR,
+        statusCode: rpcError?.statusCode || ERROR_RESPONSE.INTERNAL_SERVER_ERROR.statusCode,
+        message: rpcError?.message || ERROR_RESPONSE.INTERNAL_SERVER_ERROR.message,
+        errorCode: rpcError.errorCode || ERROR_RESPONSE.INTERNAL_SERVER_ERROR.errorCode,
         errorService: microserviceName,
         details: convertErrorToObject(exception),
       });

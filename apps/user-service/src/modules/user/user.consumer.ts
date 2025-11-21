@@ -1,4 +1,4 @@
-import { UserMessagePattern } from '@app/common';
+import { ERROR_RESPONSE, ServerException, UserMessagePattern } from '@app/common';
 import { MikroOrmMicroserviceInterceptor } from '@app/common';
 import { AllExceptionFilter } from '@app/common';
 import { Controller, UseFilters, UseInterceptors } from '@nestjs/common';
@@ -32,6 +32,7 @@ export class UserConsumer {
 
   @MessagePattern(UserMessagePattern.GET_USER)
   async getUser(data: GetUserDataDto): Promise<GetUserResponseDto> {
+    throw new ServerException(ERROR_RESPONSE.UNAUTHORIZED);
     return this.userService.getUser(data);
   }
 
