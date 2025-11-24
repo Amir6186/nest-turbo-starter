@@ -90,14 +90,14 @@ export class AuthController {
     return this.authService.logout(userPayload);
   }
 
-  @Post('send-reset-link')
+  @Post('forgot-password')
   @Public()
   @SwaggerApiDocument({
     response: { type: SuccessResponseDto },
     body: { type: ForgotPasswordDto, required: true },
     operation: {
-      operationId: `sendResetPasswordLink`,
-      summary: `Api sendResetPasswordLink`,
+      operationId: `forgotPassword`,
+      summary: `Api forgotPassword`,
       description: `Send reset password link to user`,
     },
   })
@@ -107,7 +107,7 @@ export class AuthController {
     return this.authService.sendResetPasswordLink(body);
   }
 
-  @Post('verify-reset-link')
+  @Post('forgot-password/verify')
   @Public()
   @SwaggerApiDocument({
     response: { type: VerifyResetPasswordResponseDto },
@@ -118,7 +118,7 @@ export class AuthController {
       description: `Verify reset password link`,
     },
   })
-  async verifyForgotPasswordCode(
+  async verifyResetPasswordLink(
     @Body() body: VerifyResetPasswordDto,
   ): Promise<VerifyResetPasswordResponseDto> {
     return this.authService.verifyResetPasswordLink(body);

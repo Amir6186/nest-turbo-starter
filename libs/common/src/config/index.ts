@@ -13,3 +13,4 @@ export * from './code-expires.config';
 export * from './config.validation';
 export * from './tcp.config';
 export * from './app-common.config';
+export * from './smtp.config';

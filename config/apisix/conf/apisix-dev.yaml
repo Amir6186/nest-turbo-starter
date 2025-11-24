@@ -134,8 +134,8 @@ services:
           - /auth-service/api
           - /auth-service/api/auth/login
           - /auth-service/api/auth/sign-up
-          - /auth-service/api/auth/send-reset-link
-          - /auth-service/api/auth/verify-reset-link
+          - /auth-service/api/auth/forgot-password
+          - /auth-service/api/auth/forgot-password/verify
           - /auth-service/api/auth/reset-password
           - /auth-service/swagger
           - /auth-service/swagger/*

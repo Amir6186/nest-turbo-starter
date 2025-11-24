@@ -84,6 +84,13 @@
     "AWS_S3_ACCESS_KEY_ID",
     "AWS_S3_SECRET_ACCESS_KEY",
     "AWS_S3_BUCKET_NAME",
-    "AWS_S3_URL"
+    "AWS_S3_URL",
+    "MAIL_DRIVER",
+    "MAIL_HOST",
+    "MAIL_PORT",
+    "MAIL_USERNAME",
+    "MAIL_PASSWORD",
+    "MAIL_SENDER",
+    "MAIL_SECURE"
   ]
 }
